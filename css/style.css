@@ -5,32 +5,12 @@ body {
   margin: 0;
   justify-content: center;
 }
-
-.boardBoarder {
+h1 {
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
 }
 
-.board {
-  display: inline-flex;
-  /* flex-wrap: wrap; */
-  width: 500px;
-
-  justify-content: center;
-}
-
-.sqr {
-  /* display: flex; */
-  width: 30%;
-  aspect-ratio: 1/1;
-  border: 2px solid gray;
-  font-size: 64px;
-  text-align: center;
-  /* justify-content: space-between; */
-}
-
-#reset {
+h2 {
   display: flex;
   justify-content: center;
 }
