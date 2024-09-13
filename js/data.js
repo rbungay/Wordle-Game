@@ -1,4 +1,4 @@
-const fiveLetterWords = [
+export const fiveLetterWords = [
   "About",
   "Alert",
   "Argue",
@@ -10,5 +10,3 @@ const fiveLetterWords = [
   "Abuse",
   "Alive",
 ];
-
-module.exports = fiveLetterWords;
