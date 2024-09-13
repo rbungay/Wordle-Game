@@ -14,3 +14,56 @@ h2 {
   display: flex;
   justify-content: center;
 }
+
+.board {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.boardOne {
+  display: flex;
+  justify-content: center;
+  width: 50%;
+  gap: 10px;
+}
+.boardTwo {
+  display: flex;
+  justify-content: center;
+  width: 50%;
+  gap: 10px;
+}
+.boardThree {
+  display: flex;
+  justify-content: center;
+  width: 50%;
+  gap: 10px;
+}
+.boardFour {
+  display: flex;
+  justify-content: center;
+  width: 50%;
+  gap: 10px;
+}
+.boardFive {
+  display: flex;
+  justify-content: center;
+  width: 50%;
+  gap: 10px;
+}
+
+.boardSix {
+  display: flex;
+  justify-content: center;
+  width: 50%;
+  gap: 10px;
+}
+
+.sqr {
+  width: 30%;
+  aspect-ratio: 1/1;
+  border: 1px solid black;
+  font-size: 64px;
+  text-align: center;
+}
