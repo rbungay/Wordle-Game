@@ -51,3 +51,5 @@ board.forEach(spot, index) => {
 init is suppose to set something up
 
 render is suppose to show you what you need to know. */
+
+const array = ["", "", ""];

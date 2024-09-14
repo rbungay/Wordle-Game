@@ -26,16 +26,25 @@ const updateInternalBoard = (letter) => {
       break;
     }
   }
-  console.log(board);
+};
+
+const updateDisplayBoard = (letter) => {
+  console.log("This is the letter being passed on update", letter);
+  for (let i = 0; i < boardOneEl.children.length; i++) {
+    if (boardOneEl.children[i].innerText === "") {
+      boardOneEl.children[i].innerText = letter;
+      break;
+    }
+  }
 };
 
 const updateBoard = (char) => {
   updateInternalBoard(char);
-  console.log(char);
+  updateDisplayBoard(char);
 };
 
 const handleKey = (event) => {
-  console.log("this is where i'll be passing the letter", event.key);
+  //   console.log("this is where i'll be passing the letter", event.key);
   updateBoard(event.key);
 };
 
