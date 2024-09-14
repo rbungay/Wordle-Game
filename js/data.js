@@ -11,7 +11,7 @@ export const fiveLetterWords = [
   "Alive",
 ];
 
-export const letters = [
+export const alphabet = [
   "A",
   "B",
   "C",

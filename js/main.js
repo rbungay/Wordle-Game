@@ -1,6 +1,6 @@
 /*-------------------------------- Constants --------------------------------*/
 
-import { fiveLetterWords, letters } from "./data.js";
+import { fiveLetterWords, alphabet } from "./data.js";
 
 /*---------------------------- Variables (state) ----------------------------*/
 
@@ -19,16 +19,28 @@ const sqrEl = document.querySelectorAll(".sqr");
 
 /*-------------------------------- Functions --------------------------------*/
 
-/*----------------------------- Event Listeners -----------------------------*/
+const updateInternalBoard = (letter) => {
+  for (let i = 0; i < board.length; i++) {
+    if (board[i] === "") {
+      board[i] = letter;
+      break;
+    }
+  }
+  console.log(board);
+};
 
 const updateBoard = (char) => {
-  console.log("This is the actual updateBoard function");
-  console.log();
+  updateInternalBoard(char);
+  console.log(char);
 };
 
 const handleKey = (event) => {
   console.log("this is where i'll be passing the letter", event.key);
   updateBoard(event.key);
 };
+
+// console.log(boardOneEl.children[0].innerText);
+
+/*----------------------------- Event Listeners -----------------------------*/
 
 window.addEventListener("keydown", handleKey);
