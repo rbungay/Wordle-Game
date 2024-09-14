@@ -55,7 +55,7 @@ const updateBoard = (char) => {
 
 const handleKey = (event) => {
   //   console.log("this is where i'll be passing the letter", event.key);
-  updateBoard(event.key);
+  updateBoard(event.key.toUpperCase());
   console.log(board);
 };
 
