@@ -38,6 +38,16 @@ const updateInternalBoard = (letter) => {
   }
 };
 
+const checkWinner = () => {
+  for (let i = 0; i < randomWord.length; i++) {
+    let currentWinner = randomWord[i];
+    if (boardOneEl.children[i].innerText === currentWinner) {
+      winner = true;
+      console.log("You won");
+    }
+  }
+};
+
 const updateDisplayBoard = (letter) => {
   console.log("This is the letter being passed on update", letter);
   for (let i = 0; i < boardOneEl.children.length; i++) {
@@ -55,8 +65,14 @@ const updateBoard = (char) => {
 
 const handleKey = (event) => {
   //   console.log("this is where i'll be passing the letter", event.key);
-  updateBoard(event.key.toUpperCase());
+  const key = event.key;
+  //Need a checker if it's the Enter Key
+  //Need a checker if it's the backspace key
+  //Need a checker if it's not one of the letters in the alphabet.
+
+  updateBoard(key.toUpperCase());
   console.log(board);
+  checkWinner();
 };
 
 /*----------------------------- Event Listeners -----------------------------*/
