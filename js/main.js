@@ -4,7 +4,14 @@ import { fiveLetterWords, alphabet } from "./data.js";
 
 /*---------------------------- Variables (state) ----------------------------*/
 
-let board = ["", "", "", "", ""];
+let board = [
+  ["", "", "", "", ""],
+  ["", "", "", "", ""],
+  ["", "", "", "", ""],
+  ["", "", "", "", ""],
+  ["", "", "", "", ""],
+  ["", "", "", "", ""],
+];
 let winner = false;
 let randomWord = fiveLetterWords[
   Math.floor(Math.random() * fiveLetterWords.length)
@@ -39,12 +46,18 @@ const updateInternalBoard = (letter) => {
 };
 
 const checkWinner = () => {
-  for (let i = 0; i < randomWord.length; i++) {
-    let currentWinner = randomWord[i];
-    if (boardOneEl.children[i].innerText === currentWinner) {
-      winner = true;
-      console.log("You won");
+  winner = true;
+  for (let i = 0; i < 5; i++) {
+    let currentLetter = randomWord[i];
+    let userCurrentLetter = boardOneEl.children[i].innerText;
+    if (currentLetter !== userCurrentLetter) {
+      winner = false;
     }
+  }
+  if (winner) {
+    console.log("You win");
+  } else {
+    console.log("Wrong");
   }
 };
 
@@ -66,13 +79,15 @@ const updateBoard = (char) => {
 const handleKey = (event) => {
   //   console.log("this is where i'll be passing the letter", event.key);
   const key = event.key;
+  if (key === "Enter") {
+    checkWinner();
+  }
   //Need a checker if it's the Enter Key
   //Need a checker if it's the backspace key
   //Need a checker if it's not one of the letters in the alphabet.
 
   updateBoard(key.toUpperCase());
   console.log(board);
-  checkWinner();
 };
 
 /*----------------------------- Event Listeners -----------------------------*/
