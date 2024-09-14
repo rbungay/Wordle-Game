@@ -6,6 +6,16 @@ import { fiveLetterWords, alphabet } from "./data.js";
 
 let board = ["", "", "", "", ""];
 let winner = false;
+let randomWord = fiveLetterWords[
+  Math.floor(Math.random() * fiveLetterWords.length)
+]
+  .toUpperCase()
+  .split("");
+
+console.log("This is the Random Word: ", randomWord);
+
+// create a variable that turns the random word chosen into a an array of words splits it into an array of singular letters
+
 /*------------------------ Cached Element References ------------------------*/
 
 const boardOneEl = document.querySelector(".boardOne");
@@ -46,9 +56,8 @@ const updateBoard = (char) => {
 const handleKey = (event) => {
   //   console.log("this is where i'll be passing the letter", event.key);
   updateBoard(event.key);
+  console.log(board);
 };
-
-// console.log(boardOneEl.children[0].innerText);
 
 /*----------------------------- Event Listeners -----------------------------*/
 
