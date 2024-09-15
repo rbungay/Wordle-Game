@@ -19,6 +19,12 @@ let randomWord = fiveLetterWords[
   .toUpperCase()
   .split("");
 
+let currentRow = 0;
+let currentCol = board[0].length;
+
+console.log(currentRow);
+console.log(currentCol);
+
 console.log("This is the Random Word: ", randomWord);
 
 // create a variable that turns the random word chosen into a an array of words splits it into an array of singular letters
@@ -35,6 +41,8 @@ const fullBoard = document.querySelector(".board");
 const sqrEl = document.querySelectorAll(".sqr");
 
 /*-------------------------------- Functions --------------------------------*/
+
+const goBackOneSpace = () => {};
 
 const updateInternalBoard = (letter) => {
   for (let i = 0; i < board.length; i++) {
@@ -82,14 +90,25 @@ const handleKey = (event) => {
 
   if (key === "ENTER") {
     checkWinner();
-  } else if (alphabet.includes(key)) {
+  }
+  //still need to fix backspace
+  //   if (key === "BACKSPACE") {
+  //     if (currentCol > 0) {
+  //       currentCol--;
+  //       board[currentRow][currentCol] = "";
+  //     } else if (currentRow > 0) {
+  //       currentRow--;
+  //       currentCol = board[currentRow].length - 1;
+  //       board[currentRow][currentCol] = "";
+  //     }
+  //  }
+  else if (alphabet.includes(key)) {
     updateBoard(key);
   } else {
     console.log("key is invalid");
   }
-  //Need a checker if it's the Enter Key
+
   //Need a checker if it's the backspace key
-  //Need a checker if it's not one of the letters in the alphabet.
 
   console.log(board);
 };
