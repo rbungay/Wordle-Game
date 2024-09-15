@@ -78,15 +78,19 @@ const updateBoard = (char) => {
 
 const handleKey = (event) => {
   //   console.log("this is where i'll be passing the letter", event.key);
-  const key = event.key;
-  if (key === "Enter") {
+  const key = event.key.toUpperCase();
+
+  if (key === "ENTER") {
     checkWinner();
+  } else if (alphabet.includes(key)) {
+    updateBoard(key);
+  } else {
+    console.log("key is invalid");
   }
   //Need a checker if it's the Enter Key
   //Need a checker if it's the backspace key
   //Need a checker if it's not one of the letters in the alphabet.
 
-  updateBoard(key.toUpperCase());
   console.log(board);
 };
 
