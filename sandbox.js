@@ -1,55 +1,70 @@
-// const updateBoard = (char) => {
-//   board.forEach((square, index) => {
-//     if (square === "") {
-//       board[index] = char;
-//     }
-//   });
-// };
+// let board = [
+//   ["R1", "b", "", "", ""],
+//   ["R2", "", "", "", ""],
+//   ["R3", "", "", "", ""],
+//   ["", "", "", "", ""],
+//   ["", "", "", "", ""],
+//   ["", "", "", "", ""],
+// ];
 
-// const updateDisplay = board.forEach((square, index) => {
-//   sqrEl[index].innerText = square;
-// });
+// let boardRow = board[0];
+// let boardPosition = boardRow[0];
+// console.log(boardRow);
+// console.log(boardPosition);
+// console.log(boardRow);
 
-// const init = () => {
-//   let winner = false;
-//   let board = ["", "", "", "", ""];
-//   render();
-// };
+// for (let rowIndex = 0; rowIndex < board.length; rowIndex++) {
+//   let boardRow = board[rowIndex];
+//   for (let colIndex = 0; colIndex < boardRow.length; colIndex++) {
+//     let boardPosition = board[rowIndex][colIndex];
 
-// const handleKey = (event) => {
-//   updateBoard(event.key);
-//   console.log(updateBoard());
-//   console.log(event.key);
+//     // Log the current position
+//     console.log(
+//       `Position: Row ${rowIndex + 1}, Column ${
+//         colIndex + 1
+//       }, Value: ${boardPosition}`
+//     );
+//   }
+// }
 
-// const render = () => {
-//   board.map((location, index) => {
-//     boardOneEl.children[index].innerText = board[index];
-//   });
-//   //   placeLetter();
-//   updateBoard();
-// };
+let board = [
+  ["R1", "b", "", "", ""],
+  ["R2", "", "", "", ""],
+  ["R3", "", "", "", ""],
+  ["", "", "", "", ""],
+  ["", "", "", "", ""],
+  ["", "", "", "", ""],
+];
 
-// window.onload = () => {
-//   init();
-// };
+// Define variables to track the current row and column
+let currentRowIndex = 0;
+let currentColIndex = 0;
 
-/*
-const updateBoard = (char) =>{
-    for (let i = 0; i<board.length; i++){
-    if (board[i] === ""){
-    board[i] === char
-    break
-    }
-}}
+// Function to place a value at the current position
+function placeValue(value) {
+  if (currentRowIndex >= board.length) {
+    console.log("Board is full. Cannot place more values.");
+    return;
+  }
 
-let currntboard = boardOneEl to keep track of the id with the current board
-const render = () => {
-board.forEach(spot, index) => {
-    boarrdOneEl.children[index].innerText = board[index]}
-    }
+  // Place the value in the current row and column
+  board[currentRowIndex][currentColIndex] = value;
 
-init is suppose to set something up
+  // Move to the next column
+  currentColIndex++;
 
-render is suppose to show you what you need to know. */
+  // If the current row is filled, move to the next row and reset column
+  if (currentColIndex >= board[currentRowIndex].length) {
+    currentRowIndex++;
+    currentColIndex = 0;
+  }
+}
 
-const array = ["", "", ""];
+// Example: Fill the board with values
+let values = ["X", "Y", "Z", "A", "B", "C", "D", "E", "F", "G", "H"];
+for (let i = 0; i < values.length; i++) {
+  placeValue(values[i]);
+}
+
+// Print the updated board
+console.log(board);

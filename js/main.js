@@ -19,9 +19,6 @@ let randomWord = fiveLetterWords[
   .toUpperCase()
   .split("");
 
-let currentRow = 0;
-let currentCol = board[0].length;
-
 console.log(currentRow);
 console.log(currentCol);
 
@@ -48,6 +45,7 @@ const updateInternalBoard = (letter) => {
   for (let i = 0; i < board.length; i++) {
     if (board[i] === "") {
       board[i] = letter;
+
       break;
     }
   }
