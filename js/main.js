@@ -7,17 +7,16 @@ import { fiveLetterWords, alphabet } from "./data.js";
 //setting up what the board internally looks like
 
 let board = [
-  ["R1", "", "", "", ""],
-  ["R2", "", "", "", ""],
-  ["R3", "", "", "", ""],
-  ["R4", "", "", "", ""],
-  ["R5", "", "", "", ""],
-  ["R6", "", "", "", ""],
+  ["", "", "", "", ""],
+  ["", "", "", "", ""],
+  ["", "", "", "", ""],
+  ["", "", "", "", ""],
+  ["", "", "", "", ""],
+  ["", "", "", "", ""],
 ];
 
 //being able to access the rows index, and current rows on the board itself.
 let currentRow = 0;
-let currentRowIndex = board[currentRow];
 
 //this is to iterate through backspace
 let currentColIndex = 0;
@@ -46,22 +45,35 @@ const fullBoard = document.querySelector(".board");
 const sqrEl = document.querySelectorAll(".sqr");
 
 let currentIntBoard = boardOneEl;
-console.log("This is full board", fullBoard.children.length);
+let currentRowIndex = board[currentRow];
 
 /*-------------------------------- Functions --------------------------------*/
 
 const checkWinner = () => {
   winner = true;
-  for (let i = 0; i < 5; i++) {
+  for (let i = 0; i < randomWord.length; i++) {
     let currentLetter = randomWord[i];
     let userCurrentLetter = currentIntBoard.children[i].innerText;
     if (currentLetter !== userCurrentLetter) {
       winner = false;
+      checkPosition();
+    } else {
+      currentIntBoard.children[i].style.backgroundColor = "green";
     }
   }
-  if (winner) {
-    console.log("You win");
-  } else {
+};
+
+const checkPosition = () => {
+  for (let i = 0; i < randomWord.length; i++) {
+    if (board[currentRow].includes(randomWord[i])) {
+      console.log(
+        `Position ${i}: Element ${board[currentRow][i]} is in Current Board but in the wrong position.`
+      );
+    } else {
+      console.log(
+        `Position ${i}: Element ${board[currentRow][i]} is not in the Current Board `
+      );
+    }
   }
 };
 
@@ -88,8 +100,8 @@ const moveToNextRowDisplay = () => {
 
 const updateInternalBoard = (letter) => {
   for (let i = 0; i < board.length; i++) {
-    if (board[i] === "") {
-      board[i] = letter;
+    if (board[currentRow][i] === "") {
+      board[currentRow][i] = letter;
       break;
     }
   }
@@ -130,8 +142,6 @@ const handleKey = (event) => {
   }
 
   //Need a checker if it's the backspace key
-
-  console.log(board);
 };
 
 /*----------------------------- Event Listeners -----------------------------*/
