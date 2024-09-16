@@ -150,18 +150,32 @@ const handleKey = (event) => {
     if (board[currentRow].includes("")) {
       return;
     } else {
-      checkWinner();
-      if (winner) {
-        displayMessage.innerText = "You Win!";
-        console.log("you win");
-      }
-      if (currentRow === 5) {
-        console.log("You lose");
-      } else {
-        currentColIndex = 0;
-        moveToNextRow();
-        moveToNextRowDisplay();
-      }
+      //api call needed here.
+      let selectedWord = board[currentRow].join("");
+
+      fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${selectedWord}`)
+        .then((data) => data.json())
+        .then((data) => {
+          if (data.length) {
+            checkWinner();
+            if (winner) {
+              displayMessage.innerText = "You Win!";
+              console.log("you win");
+            }
+            if (currentRow === 5) {
+              displayMessage.innerText = `You lose! The word is: ${randomWord.join(
+                ""
+              )}`;
+              console.log("You lose");
+            } else {
+              currentColIndex = 0;
+              moveToNextRow();
+              moveToNextRowDisplay();
+            }
+          } else {
+            console.log("not a word");
+          }
+        });
     }
   } else if (alphabet.includes(key) && board[currentRow][4] === "") {
     updateBoard(key);
