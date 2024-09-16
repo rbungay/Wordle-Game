@@ -50,7 +50,7 @@ console.log(displayMessage.innerText);
 
 const checkWinner = () => {
   winner = true;
-  getMyYellows();
+  colorMe();
 
   for (let i = 0; i < winningWord.length; i++) {
     let currentLetter = winningWord[i];
@@ -58,15 +58,17 @@ const checkWinner = () => {
     if (currentLetter !== userCurrentLetter) {
       winner = false;
     } else {
-      currentIntBoard.children[i].style.backgroundColor = "green";
+      currentIntBoard.children[i].style.backgroundColor = "#6AAA64";
     }
   }
 };
 
-const getMyYellows = () => {
+const colorMe = () => {
   for (let i = 0; i < winningWord.length; i++) {
     if (winningWord.indexOf(board[currentRow][i]) !== -1) {
-      currentIntBoard.children[i].style.backgroundColor = "yellow";
+      currentIntBoard.children[i].style.backgroundColor = "#C9B458";
+    } else {
+      currentIntBoard.children[i].style.backgroundColor = "#787C7E";
     }
   }
 };
