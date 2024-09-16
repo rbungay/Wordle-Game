@@ -1,70 +1,73 @@
+/* Global styling */
 body {
-  background-color: white;
-  /* Use a system font, if none are available use an available sans-sarif */
-  font-family: "Montserrat", sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
   margin: 0;
-  justify-content: center;
-}
-h1 {
-  display: flex;
-  justify-content: center;
+  font-family: "Montserrat", sans-serif; /* Use Montserrat or fallback */
+  background-color: #f0f0f0;
 }
 
+/* Centering the title and message */
+h1,
 h2 {
-  display: flex;
-  justify-content: center;
+  text-align: center;
+  margin: 10px 0;
+  font-size: 2.5em; /* Larger titles */
 }
 
+/* Board wrapper to keep all rows aligned centrally */
 .board {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 10px;
+  gap: 15px; /* Increased gap between rows */
 }
 
-.boardOne {
+/* Each row (section) uses flexbox */
+.board section {
   display: flex;
   justify-content: center;
-  width: 50%;
-  gap: 10px;
-}
-.boardTwo {
-  display: flex;
-  justify-content: center;
-  width: 50%;
-  gap: 10px;
-}
-.boardThree {
-  display: flex;
-  justify-content: center;
-  width: 50%;
-  gap: 10px;
-}
-.boardFour {
-  display: flex;
-  justify-content: center;
-  width: 50%;
-  gap: 10px;
-}
-.boardFive {
-  display: flex;
-  justify-content: center;
-  width: 50%;
-  gap: 10px;
+  gap: 15px; /* Increased gap between squares */
 }
 
-.boardSix {
-  display: flex;
-  justify-content: center;
-  width: 50%;
-  gap: 10px;
-  text-align: center;
-}
-
+/* Styling for individual squares */
 .sqr {
-  width: 30%;
-  aspect-ratio: 1/1;
-  border: 1px solid black;
-  font-size: 100px;
-  text-align: center;
+  width: 80px; /* Larger squares */
+  height: 80px;
+  background-color: #ddd;
+  border: 2px solid #ccc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 32px; /* Larger font */
+  font-weight: bold;
+  color: #333;
+}
+
+/* Media query for smaller screens (like phones) */
+@media (max-width: 768px) {
+  body {
+    padding: 20px; /* Padding for small screens */
+  }
+
+  h1,
+  h2 {
+    font-size: 2em; /* Slightly smaller titles */
+  }
+
+  .board {
+    gap: 10px; /* Reduce gap between rows on smaller screens */
+  }
+
+  .board section {
+    gap: 10px; /* Reduce gap between squares */
+  }
+
+  .sqr {
+    width: 50px; /* Smaller squares */
+    height: 50px;
+    font-size: 20px; /* Smaller font inside squares */
+  }
 }
