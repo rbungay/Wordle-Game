@@ -1,5 +1,3 @@
-/*-------------------------------- Constants --------------------------------*/
-
 import { fiveLetterWords, alphabet } from "./data.js";
 
 /*---------------------------- Variables (state) ----------------------------*/
@@ -43,9 +41,12 @@ const boardThreeEl = document.querySelector(".boardThree");
 const boardFourEl = document.querySelector(".boardFour");
 const boardFiveEl = document.querySelector(".boardFive");
 const boardSixEl = document.querySelector(".boardSix");
+const displayMessage = document.querySelector("#message");
 
 let currentIntBoard = boardOneEl;
 let currentRowIndex = board[currentRow];
+
+console.log(displayMessage.innerText);
 
 /*-------------------------------- Functions --------------------------------*/
 
@@ -151,6 +152,7 @@ const handleKey = (event) => {
     } else {
       checkWinner();
       if (winner) {
+        displayMessage.innerText = "You Win!";
         console.log("you win");
       }
       if (currentRow === 5) {
