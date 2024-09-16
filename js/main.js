@@ -1,4 +1,4 @@
-import { fiveLetterWords, alphabet } from "./data.js";
+import { wordBank, alphabet } from "./data.js";
 
 /*---------------------------- Variables (state) ----------------------------*/
 
@@ -25,13 +25,11 @@ let currentColIndex = 0;
 let winner = false;
 
 //getting the random word from the word bank
-let randomWord = fiveLetterWords[
-  Math.floor(Math.random() * fiveLetterWords.length)
-]
+let winningWord = wordBank[Math.floor(Math.random() * wordBank.length)]
   .toUpperCase()
   .split("");
 
-console.log("This is the Random Word: ", randomWord);
+console.log("This is the Random Word: ", winningWord);
 
 /*------------------------ Cached Element References ------------------------*/
 
@@ -54,8 +52,8 @@ const checkWinner = () => {
   winner = true;
   getMyYellows();
 
-  for (let i = 0; i < randomWord.length; i++) {
-    let currentLetter = randomWord[i];
+  for (let i = 0; i < winningWord.length; i++) {
+    let currentLetter = winningWord[i];
     let userCurrentLetter = currentIntBoard.children[i].innerText;
     if (currentLetter !== userCurrentLetter) {
       winner = false;
@@ -66,8 +64,8 @@ const checkWinner = () => {
 };
 
 const getMyYellows = () => {
-  for (let i = 0; i < randomWord.length; i++) {
-    if (randomWord.indexOf(board[currentRow][i]) !== -1) {
+  for (let i = 0; i < winningWord.length; i++) {
+    if (winningWord.indexOf(board[currentRow][i]) !== -1) {
       currentIntBoard.children[i].style.backgroundColor = "yellow";
     }
   }
@@ -163,7 +161,7 @@ const handleKey = (event) => {
               console.log("you win");
             }
             if (currentRow === 5) {
-              displayMessage.innerText = `You lose! The word is: ${randomWord.join(
+              displayMessage.innerText = `You lose! The word is: ${winningWord.join(
                 ""
               )}`;
               console.log("You lose");
