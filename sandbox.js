@@ -60,6 +60,11 @@ function placeValue(value) {
   }
 }
 
+function deleteValue() {
+  currentColIndex--;
+  board[currentRowIndex][currentColIndex] = "";
+}
+
 // Example: Fill the board with values
 let values = ["X", "Y", "Z", "A", "B", "C", "D", "E", "F", "G", "H"];
 for (let i = 0; i < values.length; i++) {
@@ -68,3 +73,5 @@ for (let i = 0; i < values.length; i++) {
 
 // Print the updated board
 console.log(board);
+
+console.log(currentColIndex);
