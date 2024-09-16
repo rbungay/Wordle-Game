@@ -7,18 +7,20 @@ import { fiveLetterWords, alphabet } from "./data.js";
 //setting up what the board internally looks like
 
 let board = [
-  ["", "", "", "", ""],
-  ["", "", "", "", ""],
-  ["", "", "", "", ""],
-  ["", "", "", "", ""],
-  ["", "", "", "", ""],
-  ["", "", "", "", ""],
+  ["R1", "", "", "", ""],
+  ["R2", "", "", "", ""],
+  ["R3", "", "", "", ""],
+  ["R4", "", "", "", ""],
+  ["R5", "", "", "", ""],
+  ["R6", "", "", "", ""],
 ];
 
 //being able to access the rows index, and current rows on the board itself.
-let currentRowIndex = 0;
-let currentColIndex = 0;
 let currentRow = 0;
+let currentRowIndex = board[currentRow];
+
+//this is to iterate through backspace
+let currentColIndex = 0;
 
 //game state where winner is false. if it turns true, game ends
 let winner = false;
@@ -60,7 +62,15 @@ const checkWinner = () => {
   if (winner) {
     console.log("You win");
   } else {
-    console.log("Wrong");
+    moveToNextRow();
+    console.log(currentRowIndex);
+  }
+};
+
+const moveToNextRow = () => {
+  if (currentRow < board.length) {
+    currentRow++;
+    currentRowIndex = board[currentRow];
   }
 };
 
@@ -68,7 +78,6 @@ const updateInternalBoard = (letter) => {
   for (let i = 0; i < board.length; i++) {
     if (board[i] === "") {
       board[i] = letter;
-
       break;
     }
   }
@@ -95,6 +104,11 @@ const handleKey = (event) => {
 
   if (key === "ENTER") {
     checkWinner();
+    if (winner) {
+      console.log("you win");
+    } else {
+      moveToNextRow();
+    }
     ///IF CHECKWINNER IS FALSE, MOVE SOMETHING TO THE NEXT ROW
   } else if (alphabet.includes(key)) {
     updateBoard(key);
