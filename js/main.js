@@ -15,6 +15,8 @@ let board = [
   ["", "", "", "", ""],
 ];
 
+let boardFull = false;
+
 //being able to access the rows index, and current rows on the board itself.
 let currentRow = 0;
 
@@ -66,10 +68,7 @@ const checkWinner = () => {
 
 const getMyYellows = () => {
   for (let i = 0; i < randomWord.length; i++) {
-    console.log(randomWord.indexOf(board[currentRow][i]));
     if (randomWord.indexOf(board[currentRow][i]) !== -1) {
-      //null
-      console.log(`There should be a yellow at ${board[currentRow][i]}`);
       currentIntBoard.children[i].style.backgroundColor = "yellow";
     }
   }
@@ -106,7 +105,6 @@ const updateInternalBoard = (letter) => {
 };
 
 const updateDisplayBoard = (letter) => {
-  console.log("This is the letter being passed on update", letter);
   for (let i = 0; i < currentIntBoard.children.length; i++) {
     if (currentIntBoard.children[i].innerText === "") {
       currentIntBoard.children[i].innerText = letter;
@@ -115,24 +113,55 @@ const updateDisplayBoard = (letter) => {
   }
 };
 
+const displayBackspace = () => {
+  for (let i = currentIntBoard.children.length - 1; i >= 0; i--) {
+    if (currentIntBoard.children[i].innerText != "") {
+      currentIntBoard.children[i].innerText = "";
+      return;
+    }
+  }
+};
+
 const updateBoard = (char) => {
   updateInternalBoard(char);
   updateDisplayBoard(char);
+  currentColIndex += 1;
+  console.log(board[currentRow][currentColIndex - 1]);
+  console.log(board[currentRow]);
+};
+
+const backspace = () => {
+  board[currentRow][currentColIndex - 1] = "";
+  currentColIndex -= 1;
+  displayBackspace();
 };
 
 const handleKey = (event) => {
   //   console.log("this is where i'll be passing the letter", event.key);
   const key = event.key.toUpperCase();
 
-  if (key === "ENTER") {
-    checkWinner();
-    if (winner) {
-      console.log("you win");
+  if (key === "BACKSPACE") {
+    if (currentColIndex === 0) {
+      return;
     } else {
-      moveToNextRow();
-      moveToNextRowDisplay();
+      backspace();
     }
-    ///IF CHECKWINNER IS FALSE, MOVE SOMETHING TO THE NEXT ROW
+  } else if (key === "ENTER") {
+    if (board[currentRow].includes("")) {
+      return;
+    } else {
+      checkWinner();
+      if (winner) {
+        console.log("you win");
+      }
+      if (currentRow === 5) {
+        console.log("You lose");
+      } else {
+        currentColIndex = 0;
+        moveToNextRow();
+        moveToNextRowDisplay();
+      }
+    }
   } else if (alphabet.includes(key)) {
     updateBoard(key);
   } else {
