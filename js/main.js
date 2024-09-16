@@ -43,17 +43,16 @@ const boardSixEl = document.querySelector(".boardSix");
 const fullBoard = document.querySelector(".board");
 const sqrEl = document.querySelectorAll(".sqr");
 
-let currentBoardEl = boardOneEl;
+let currentIntBoard = boardOneEl;
+console.log("This is full board", fullBoard.children.length);
 
 /*-------------------------------- Functions --------------------------------*/
-
-const goBackOneSpace = () => {};
 
 const checkWinner = () => {
   winner = false;
   for (let i = 0; i < 5; i++) {
     let currentLetter = randomWord[i];
-    let userCurrentLetter = currentBoardEl.children[i].innerText;
+    let userCurrentLetter = currentIntBoard.children[i].innerText;
     if (currentLetter === userCurrentLetter) {
       winner = true;
     }
@@ -62,8 +61,12 @@ const checkWinner = () => {
     console.log("You win");
   } else {
     console.log("Wrong");
-    // currentRowIndex += 1;
-    // currentColIndex = 0;
+    if (fullBoard.children.length === currentRow) {
+      console.log("Game Over");
+    }
+    currentRow;
+    currentRowIndex += 1;
+    currentColIndex = 0;
   }
 };
 
@@ -79,9 +82,9 @@ const updateInternalBoard = (letter) => {
 
 const updateDisplayBoard = (letter) => {
   console.log("This is the letter being passed on update", letter);
-  for (let i = 0; i < currentBoardEl.children.length; i++) {
-    if (currentBoardEl.children[i].innerText === "") {
-      currentBoardEl.children[i].innerText = letter;
+  for (let i = 0; i < currentIntBoard.children.length; i++) {
+    if (currentIntBoard.children[i].innerText === "") {
+      currentIntBoard.children[i].innerText = letter;
       break;
     }
   }
@@ -99,20 +102,7 @@ const handleKey = (event) => {
   if (key === "ENTER") {
     checkWinner();
     ///IF CHECKWINNER IS FALSE, MOVE SOMETHING TO THE NEXT ROW
-  }
-
-  //still need to fix backspace
-  //   if (key === "BACKSPACE") {
-  //     if (currentCol > 0) {
-  //       currentCol--;
-  //       board[currentRow][currentCol] = "";
-  //     } else if (currentRow > 0) {
-  //       currentRow--;
-  //       currentCol = board[currentRow].length - 1;
-  //       board[currentRow][currentCol] = "";
-  //     }
-  //  }
-  else if (alphabet.includes(key)) {
+  } else if (alphabet.includes(key)) {
     updateBoard(key);
   } else {
     console.log("key is invalid");
