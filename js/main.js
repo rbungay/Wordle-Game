@@ -62,8 +62,6 @@ const checkWinner = () => {
   if (winner) {
     console.log("You win");
   } else {
-    moveToNextRow();
-    console.log(currentRowIndex);
   }
 };
 
@@ -71,6 +69,20 @@ const moveToNextRow = () => {
   if (currentRow < board.length) {
     currentRow++;
     currentRowIndex = board[currentRow];
+  }
+};
+
+const moveToNextRowDisplay = () => {
+  if (currentIntBoard === boardOneEl) {
+    currentIntBoard = boardTwoEl;
+  } else if (currentIntBoard === boardTwoEl) {
+    currentIntBoard = boardThreeEl;
+  } else if (currentIntBoard === boardThreeEl) {
+    currentIntBoard = boardFourEl;
+  } else if (currentIntBoard === boardFourEl) {
+    currentIntBoard = boardFiveEl;
+  } else if (currentIntBoard === boardFiveEl) {
+    currentIntBoard = boardSixEl;
   }
 };
 
@@ -88,7 +100,7 @@ const updateDisplayBoard = (letter) => {
   for (let i = 0; i < currentIntBoard.children.length; i++) {
     if (currentIntBoard.children[i].innerText === "") {
       currentIntBoard.children[i].innerText = letter;
-      break;
+      return;
     }
   }
 };
@@ -108,6 +120,7 @@ const handleKey = (event) => {
       console.log("you win");
     } else {
       moveToNextRow();
+      moveToNextRowDisplay();
     }
     ///IF CHECKWINNER IS FALSE, MOVE SOMETHING TO THE NEXT ROW
   } else if (alphabet.includes(key)) {
