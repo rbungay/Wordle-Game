@@ -49,24 +49,18 @@ console.log("This is full board", fullBoard.children.length);
 /*-------------------------------- Functions --------------------------------*/
 
 const checkWinner = () => {
-  winner = false;
+  winner = true;
   for (let i = 0; i < 5; i++) {
     let currentLetter = randomWord[i];
     let userCurrentLetter = currentIntBoard.children[i].innerText;
-    if (currentLetter === userCurrentLetter) {
-      winner = true;
+    if (currentLetter !== userCurrentLetter) {
+      winner = false;
     }
   }
   if (winner) {
     console.log("You win");
   } else {
     console.log("Wrong");
-    if (fullBoard.children.length === currentRow) {
-      console.log("Game Over");
-    }
-    currentRow;
-    currentRowIndex += 1;
-    currentColIndex = 0;
   }
 };
 
