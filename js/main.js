@@ -43,8 +43,6 @@ const boardThreeEl = document.querySelector(".boardThree");
 const boardFourEl = document.querySelector(".boardFour");
 const boardFiveEl = document.querySelector(".boardFive");
 const boardSixEl = document.querySelector(".boardSix");
-const fullBoard = document.querySelector(".board");
-const sqrEl = document.querySelectorAll(".sqr");
 
 let currentIntBoard = boardOneEl;
 let currentRowIndex = board[currentRow];
@@ -132,6 +130,7 @@ const updateBoard = (char) => {
 
 const backspace = () => {
   board[currentRow][currentColIndex - 1] = "";
+  console.log(board[currentRow]);
   currentColIndex -= 1;
   displayBackspace();
 };
@@ -162,13 +161,11 @@ const handleKey = (event) => {
         moveToNextRowDisplay();
       }
     }
-  } else if (alphabet.includes(key)) {
+  } else if (alphabet.includes(key) && board[currentRow][4] === "") {
     updateBoard(key);
   } else {
     console.log("key is invalid");
   }
-
-  //Need a checker if it's the backspace key
 };
 
 /*----------------------------- Event Listeners -----------------------------*/
