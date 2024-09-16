@@ -51,28 +51,26 @@ let currentRowIndex = board[currentRow];
 
 const checkWinner = () => {
   winner = true;
+  getMyYellows();
+
   for (let i = 0; i < randomWord.length; i++) {
     let currentLetter = randomWord[i];
     let userCurrentLetter = currentIntBoard.children[i].innerText;
     if (currentLetter !== userCurrentLetter) {
       winner = false;
-      checkPosition();
     } else {
       currentIntBoard.children[i].style.backgroundColor = "green";
     }
   }
 };
 
-const checkPosition = () => {
+const getMyYellows = () => {
   for (let i = 0; i < randomWord.length; i++) {
-    if (board[currentRow].includes(randomWord[i])) {
-      console.log(
-        `Position ${i}: Element ${board[currentRow][i]} is in Current Board but in the wrong position.`
-      );
-    } else {
-      console.log(
-        `Position ${i}: Element ${board[currentRow][i]} is not in the Current Board `
-      );
+    console.log(randomWord.indexOf(board[currentRow][i]));
+    if (randomWord.indexOf(board[currentRow][i]) !== -1) {
+      //null
+      console.log(`There should be a yellow at ${board[currentRow][i]}`);
+      currentIntBoard.children[i].style.backgroundColor = "yellow";
     }
   }
 };
