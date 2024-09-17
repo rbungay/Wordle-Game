@@ -220,8 +220,8 @@ const handleKey = (event) => {
             if (winner) {
               displayMessage.innerText = "You Win!";
               console.log("you win");
-            }
-            if (currentRow === 5) {
+              return;
+            } else if (currentRow === 5) {
               displayMessage.innerText = `You lose! The word is: ${winningWord.join(
                 ""
               )}`;
