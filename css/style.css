@@ -46,6 +46,41 @@ h2 {
   color: #333;
 }
 
+.keyboard {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.key {
+  padding: 10px 15px;
+  margin: 5px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f0f0f0;
+  cursor: pointer;
+}
+
+.key.large {
+  padding: 10px 30px;
+}
+
+.key:hover {
+  background-color: #ddd;
+}
+
 /* Media query for smaller screens (like phones) */
 @media (max-width: 768px) {
   body {
@@ -69,5 +104,19 @@ h2 {
     width: 50px; /* Smaller squares */
     height: 50px;
     font-size: 20px; /* Smaller font inside squares */
+  }
+
+  .keyboard {
+    max-width: 100%;
+    padding: 10px;
+  }
+
+  .key {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .key.large {
+    padding: 10px 20px;
   }
 }
