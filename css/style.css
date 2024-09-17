@@ -63,7 +63,7 @@ h2 {
   margin-bottom: 10px;
 }
 
-.key {
+.keyLetter {
   padding: 10px 15px;
   margin: 5px;
   font-size: 16px;
@@ -73,37 +73,41 @@ h2 {
   cursor: pointer;
 }
 
-.key.large {
+.keyLetter.large {
   padding: 10px 30px;
 }
 
-.key:hover {
+.keyLetter:hover {
   background-color: #ddd;
 }
 
-/* Media query for smaller screens (like phones) */
+.keyLetter.highlight {
+  background-color: #ddd;
+}
+
+/* Media query for phones*/
 @media (max-width: 768px) {
   body {
-    padding: 20px; /* Padding for small screens */
+    padding: 20px;
   }
 
   h1,
   h2 {
-    font-size: 2em; /* Slightly smaller titles */
+    font-size: 2em;
   }
 
   .board {
-    gap: 10px; /* Reduce gap between rows on smaller screens */
+    gap: 10px;
   }
 
   .board section {
-    gap: 10px; /* Reduce gap between squares */
+    gap: 10px;
   }
 
   .sqr {
-    width: 50px; /* Smaller squares */
+    width: 50px;
     height: 50px;
-    font-size: 20px; /* Smaller font inside squares */
+    font-size: 20px;
   }
 
   .keyboard {
@@ -111,12 +115,12 @@ h2 {
     padding: 10px;
   }
 
-  .key {
+  .keyLetter {
     padding: 10px;
     font-size: 14px;
   }
 
-  .key.large {
+  .keyLetter.large {
     padding: 10px 20px;
   }
 }

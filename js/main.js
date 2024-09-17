@@ -48,6 +48,12 @@ console.log(displayMessage.innerText);
 
 /*-------------------------------- Functions --------------------------------*/
 
+// const highlightDisplayKey = () => {
+//     setTimeout(() => {
+
+//     })
+// }
+
 const checkWinner = () => {
   winner = true;
   colorMe();
@@ -137,16 +143,37 @@ const backspace = () => {
 };
 
 const handleKey = (event) => {
-  //   console.log("this is where i'll be passing the letter", event.key);
   const key = event.key.toUpperCase();
+  const displayKeyboard = document.querySelectorAll(".keyLetter");
+  const enterKey = document.querySelector("#enter");
+  const backKey = document.querySelector("#back");
+
+  // highlights the keyboard on the page for accessibility reasons
+  displayKeyboard.forEach((keyElement) => {
+    console.log("this works", keyElement);
+    if (keyElement.innerText == key) {
+      keyElement.classList.add("highlight");
+      setTimeout(() => {
+        keyElement.classList.remove("highlight");
+      }, 200);
+    }
+  });
 
   if (key === "BACKSPACE") {
+    backKey.classList.add("highlight");
+    setTimeout(() => {
+      backKey.classList.remove("highlight");
+    }, 200);
     if (currentColIndex === 0) {
       return;
     } else {
       backspace();
     }
   } else if (key === "ENTER") {
+    enterKey.classList.add("highlight");
+    setTimeout(() => {
+      enterKey.classList.remove("highlight");
+    }, 200);
     if (board[currentRow].includes("")) {
       return;
     } else {
