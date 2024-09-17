@@ -40,6 +40,7 @@ const boardFourEl = document.querySelector(".boardFour");
 const boardFiveEl = document.querySelector(".boardFive");
 const boardSixEl = document.querySelector(".boardSix");
 const displayMessage = document.querySelector("#message");
+const displayKeyboard = document.querySelectorAll(".keyLetter");
 
 let currentIntBoard = boardOneEl;
 let currentRowIndex = board[currentRow];
@@ -66,6 +67,38 @@ const checkWinner = () => {
     } else {
       currentIntBoard.children[i].style.backgroundColor = "#6AAA64";
     }
+    displayKeyboard.forEach((keyElement) => {
+      if (keyElement.innerText === userCurrentLetter) {
+        keyElement.classList.add("incorrect");
+      }
+
+      if (
+        keyElement.innerText === userCurrentLetter &&
+        winningWord.includes(userCurrentLetter)
+      ) {
+        keyElement.classList.remove("incorrect");
+        keyElement.classList.add("misplaced");
+      }
+
+      if (
+        keyElement.innerText === userCurrentLetter &&
+        currentLetter === userCurrentLetter
+      ) {
+        keyElement.classList.remove("incorrect");
+        keyElement.classList.remove("misplaced");
+        keyElement.classList.add("correct");
+      }
+      i;
+
+      //   if (
+      //     keyElement.innerText === userCurrentLetter &&
+      //     currentLetter === userCurrentLetter
+      //   ) {
+      //     keyElement.classList.add("correct");
+      //   } else if (keyElement.innerText === userCurrentLetter) {
+      //     keyElement.classList.add("incorrect");
+      //   }
+    });
   }
 };
 
@@ -144,13 +177,12 @@ const backspace = () => {
 
 const handleKey = (event) => {
   const key = event.key.toUpperCase();
-  const displayKeyboard = document.querySelectorAll(".keyLetter");
+
   const enterKey = document.querySelector("#enter");
   const backKey = document.querySelector("#back");
 
   // highlights the keyboard on the page for accessibility reasons
   displayKeyboard.forEach((keyElement) => {
-    console.log("this works", keyElement);
     if (keyElement.innerText == key) {
       keyElement.classList.add("highlight");
       setTimeout(() => {
