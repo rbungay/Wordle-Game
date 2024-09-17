@@ -227,6 +227,7 @@ const handleKey = (event) => {
               )}`;
               console.log("You lose");
             } else {
+              displayMessage.innerText = "";
               currentColIndex = 0;
               moveToNextRow();
               moveToNextRowDisplay();
