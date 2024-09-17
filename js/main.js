@@ -235,6 +235,9 @@ const handleKey = (event) => {
           } else {
             console.log("not a word");
             displayMessage.innerText = "Not a word, Try again";
+            setTimeout(() => {
+              displayMessage.innerText = "";
+            }, 1000);
           }
         });
     }
