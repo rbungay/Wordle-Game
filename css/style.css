@@ -14,7 +14,7 @@ h1,
 h2 {
   text-align: center;
   margin: 10px 0;
-  font-size: 2em; /* Larger titles */
+  font-size: 2em;
 }
 
 /* Board wrapper to keep all rows aligned centrally */
@@ -24,23 +24,21 @@ h2 {
   gap: 10px; /* Increased gap between rows */
 }
 
-/* Each row (section) uses flexbox */
 .board section {
   display: flex;
   justify-content: center;
   gap: 10px; /* Increased gap between squares */
 }
 
-/* Styling for individual squares */
 .sqr {
-  width: 80px; /* Larger squares */
+  width: 80px;
   height: 80px;
   background-color: #ddd;
   border: 2px solid #ccc;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 32px; /* Larger font */
+  font-size: 32px;
   font-weight: bold;
   color: #333;
 }

@@ -14,17 +14,10 @@ let board = [
 ];
 
 let boardFull = false;
-
-//being able to access the rows index, and current rows on the board itself.
 let currentRow = 0;
-
-//this is to iterate through backspace
 let currentColIndex = 0;
-
-//game state where winner is false. if it turns true, game ends
 let winner = false;
 
-//getting the random word from the word bank
 let winningWord = wordBank[Math.floor(Math.random() * wordBank.length)]
   .toUpperCase()
   .split("");
@@ -44,8 +37,6 @@ const displayKeyboard = document.querySelectorAll(".keyLetter");
 
 let currentIntBoard = boardOneEl;
 let currentRowIndex = board[currentRow];
-
-console.log(displayMessage.innerText);
 
 /*-------------------------------- Functions --------------------------------*/
 
@@ -164,13 +155,10 @@ const updateBoard = (char) => {
   updateInternalBoard(char);
   updateDisplayBoard(char);
   currentColIndex += 1;
-  console.log(board[currentRow][currentColIndex - 1]);
-  console.log(board[currentRow]);
 };
 
 const backspace = () => {
   board[currentRow][currentColIndex - 1] = "";
-  console.log(board[currentRow]);
   currentColIndex -= 1;
   displayBackspace();
 };
@@ -219,13 +207,14 @@ const handleKey = (event) => {
             checkWinner();
             if (winner) {
               displayMessage.innerText = "You Win!";
-              console.log("you win");
               return;
             } else if (currentRow === 5) {
               displayMessage.innerText = `You lose! The word is: ${winningWord.join(
                 ""
               )}`;
-              console.log("You lose");
+              console.log(
+                "If you are looking at the console, it will not change...you still lose :) "
+              );
             } else {
               displayMessage.innerText = "";
               currentColIndex = 0;
@@ -244,7 +233,7 @@ const handleKey = (event) => {
   } else if (alphabet.includes(key) && board[currentRow][4] === "") {
     updateBoard(key);
   } else {
-    console.log("key is invalid");
+    return;
   }
 };
 
