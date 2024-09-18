@@ -189,3 +189,62 @@ h2 {
     font-size: 24px;
   }
 }
+
+/* for phones */
+/* Media query for small phones (max width 480px) */
+@media (max-width: 480px) {
+  body {
+    padding: 10px;
+  }
+
+  h1,
+  h2 {
+    font-size: 1.5em;
+  }
+
+  .board {
+    gap: 5px;
+  }
+
+  .board section {
+    gap: 5px;
+  }
+
+  .sqr {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+  }
+
+  .keyboard {
+    max-width: 100%;
+    padding: 5px;
+  }
+
+  .keyLetter {
+    padding: 8px;
+    font-size: 12px;
+  }
+
+  .keyLetter.large {
+    padding: 8px 15px;
+  }
+
+  .modal-content {
+    margin: 50% auto;
+    padding: 20px;
+    width: 90%;
+    max-width: 400px;
+    max-height: 50vh;
+    overflow-y: auto;
+    box-sizing: border-box;
+  }
+
+  .modal-content button {
+    margin-top: 10px;
+  }
+
+  .close-button {
+    font-size: 20px;
+  }
+}
