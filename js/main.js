@@ -223,20 +223,13 @@ const handleKey = (event) => {
 /*----------------------------- Event Listeners -----------------------------*/
 
 window.addEventListener("keydown", handleKey);
+// window.addEventListener("click", handleKey);
 
-// main.js
 document.addEventListener("DOMContentLoaded", () => {
-  // Show the modal when the page loads
+  function closeModal() {
+    document.getElementById("instructionsModal").style.display = "none";
+  }
   document.getElementById("instructionsModal").style.display = "block";
-
-  // Add event listeners to buttons
   document.querySelector(".close-button").addEventListener("click", closeModal);
-  document
-    .querySelector('button[onclick="closeModal()"]')
-    .addEventListener("click", closeModal);
+  document.querySelector("button").addEventListener("click", closeModal);
 });
-
-function closeModal() {
-  document.getElementById("instructionsModal").style.display = "none";
-  document.getElementById("mainContent").style.display = "block";
-}
