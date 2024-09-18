@@ -281,15 +281,38 @@ const clickKey = (event) => {
 /*----------------------------- Event Listeners -----------------------------*/
 
 window.addEventListener("keydown", handleKey);
-// window.addEventListener("click", handleKey);
 
 window.addEventListener("click", clickKey);
 
 document.addEventListener("DOMContentLoaded", () => {
   function closeModal() {
-    document.getElementById("instructionsModal").style.display = "none";
+    const modal = document.getElementById("instructionsModal");
+
+    if (modal) {
+      modal.style.display = "none";
+    } else {
+      console.error("Modal not found in the DOM.");
+    }
   }
-  document.getElementById("instructionsModal").style.display = "block";
-  document.querySelector(".close-button").addEventListener("click", closeModal);
-  document.querySelector("button").addEventListener("click", closeModal);
+
+  const modal = document.getElementById("instructionsModal");
+  if (modal) {
+    modal.style.display = "block";
+  } else {
+    console.error("Modal element not found in the DOM.");
+  }
+  const closeButton = document.querySelector(".close-button");
+  const playButton = document.getElementById("playButton");
+
+  if (closeButton) {
+    closeButton.addEventListener("click", closeModal);
+  } else {
+    console.error("Close button not found in the DOM.");
+  }
+
+  if (playButton) {
+    playButton.addEventListener("click", closeModal);
+  } else {
+    console.error("Let's Play button not found in the DOM.");
+  }
 });
