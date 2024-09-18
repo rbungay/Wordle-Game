@@ -6,6 +6,10 @@
 
 Welcome to **Rani's Wordle Game**, a comprehensive project that seeks to explore and encapsulate the vast array of knowledge I've acquired in _unit 1_ of **General Assembly**.
 
+![instructions](Instructions.png)
+
+![interaction look](Interaction.png)
+
 ## Knowledge Acquired
 
 The code I will be developing will incorporate a range of concepts, including but not limited to:
