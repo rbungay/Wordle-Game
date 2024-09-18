@@ -40,12 +40,6 @@ let currentRowIndex = board[currentRow];
 
 /*-------------------------------- Functions --------------------------------*/
 
-// const highlightDisplayKey = () => {
-//     setTimeout(() => {
-
-//     })
-// }
-
 const checkWinner = () => {
   winner = true;
   colorMe();
@@ -79,16 +73,6 @@ const checkWinner = () => {
         keyElement.classList.remove("misplaced");
         keyElement.classList.add("correct");
       }
-      i;
-
-      //   if (
-      //     keyElement.innerText === userCurrentLetter &&
-      //     currentLetter === userCurrentLetter
-      //   ) {
-      //     keyElement.classList.add("correct");
-      //   } else if (keyElement.innerText === userCurrentLetter) {
-      //     keyElement.classList.add("incorrect");
-      //   }
     });
   }
 };
@@ -197,7 +181,7 @@ const handleKey = (event) => {
     if (board[currentRow].includes("")) {
       return;
     } else {
-      //api call needed here.
+      // checking with an API to confirm if this is an actual word.
       let selectedWord = board[currentRow].join("");
 
       fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${selectedWord}`)
@@ -222,7 +206,6 @@ const handleKey = (event) => {
               moveToNextRowDisplay();
             }
           } else {
-            console.log("not a word");
             displayMessage.innerText = "Not a word, Try again";
             setTimeout(() => {
               displayMessage.innerText = "";
