@@ -108,7 +108,7 @@ h2 {
 }
 
 .modal-content {
-  background-color: #fefefe;
+  background-color: #dddada;
   margin: 15% auto; /* 15% from the top and centered */
   padding: 50px;
   border: 1px solid #888;
@@ -131,7 +131,7 @@ h2 {
 
 .close-button:hover,
 .close-button:focus {
-  color: #6aaa64;
+  color: black;
   text-decoration: none;
   cursor: pointer;
 }
