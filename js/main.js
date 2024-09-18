@@ -34,6 +34,8 @@ const boardFiveEl = document.querySelector(".boardFive");
 const boardSixEl = document.querySelector(".boardSix");
 const displayMessage = document.querySelector("#message");
 const displayKeyboard = document.querySelectorAll(".keyLetter");
+const enterKey = document.querySelector("#enter");
+const backKey = document.querySelector("#back");
 
 let currentIntBoard = boardOneEl;
 let currentRowIndex = board[currentRow];
@@ -149,10 +151,6 @@ const backspace = () => {
 
 const handleKey = (event) => {
   const key = event.key.toUpperCase();
-
-  const enterKey = document.querySelector("#enter");
-  const backKey = document.querySelector("#back");
-
   // highlights the keyboard on the page for accessibility reasons
   displayKeyboard.forEach((keyElement) => {
     if (keyElement.innerText == key) {
@@ -220,10 +218,72 @@ const handleKey = (event) => {
   }
 };
 
+const clickKey = (event) => {
+  const letterClicked = event.target.innerText.toUpperCase();
+
+  if (letterClicked === "BACK") {
+    backKey.classList.add("highlight");
+    setTimeout(() => {
+      backKey.classList.remove("highlight");
+    }, 200);
+    if (currentColIndex === 0) {
+      return;
+    } else {
+      backspace();
+    }
+  } else if (letterClicked === "ENTER") {
+    enterKey.classList.add("highlight");
+    setTimeout(() => {
+      enterKey.classList.remove("highlight");
+    }, 200);
+    if (board[currentRow].includes("")) {
+      return;
+    } else {
+      // checking with an API to confirm if this is an actual word.
+      let selectedWord = board[currentRow].join("");
+
+      fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${selectedWord}`)
+        .then((data) => data.json())
+        .then((data) => {
+          if (data.length) {
+            checkWinner();
+            if (winner) {
+              displayMessage.innerText = "You Win!";
+              return;
+            } else if (currentRow === 5) {
+              displayMessage.innerText = `You lose! The word is: ${winningWord.join(
+                ""
+              )}`;
+              console.log(
+                "If you are looking at the console, it will not change...you still lose :) "
+              );
+            } else {
+              displayMessage.innerText = "";
+              currentColIndex = 0;
+              moveToNextRow();
+              moveToNextRowDisplay();
+            }
+          } else {
+            displayMessage.innerText = "Not a word, Try again";
+            setTimeout(() => {
+              displayMessage.innerText = "";
+            }, 1000);
+          }
+        });
+    }
+  } else if (alphabet.includes(letterClicked) && board[currentRow][4] === "") {
+    updateBoard(letterClicked);
+  } else {
+    return;
+  }
+};
+
 /*----------------------------- Event Listeners -----------------------------*/
 
 window.addEventListener("keydown", handleKey);
 // window.addEventListener("click", handleKey);
+
+window.addEventListener("click", clickKey);
 
 document.addEventListener("DOMContentLoaded", () => {
   function closeModal() {
